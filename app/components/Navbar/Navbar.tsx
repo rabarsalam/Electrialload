@@ -62,8 +62,24 @@ export default function Navbar() {
 
   /* ---------- Locale switch ---------- */
   const getLocalePath = (newLocale: string) => {
+    // Get current pathname segments
     const segments = pathname.split("/").filter(Boolean);
-    segments[0] = newLocale;
+
+    // If first segment is a locale, replace it; otherwise add new locale at start
+    if (
+      segments.length > 0 &&
+      (segments[0] === "en" || segments[0] === "ar" || segments[0] === "ku")
+    ) {
+      segments[0] = newLocale;
+    } else {
+      segments.unshift(newLocale);
+    }
+
+    // If only locale (home page), return just /locale
+    if (segments.length === 1) {
+      return `/${newLocale}`;
+    }
+
     return "/" + segments.join("/");
   };
 
@@ -90,7 +106,7 @@ export default function Navbar() {
                 href={`/${locale}`}
                 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900"
               >
-                Electrical Load
+                Electrical Loads
               </Link>
             </div>
 
