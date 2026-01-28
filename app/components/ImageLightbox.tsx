@@ -7,8 +7,10 @@ interface ImageLightboxProps {
   images: string[];
   currentIndex: number;
   isOpen: boolean;
-  onClose: () => void;
-  onChangeIndex: (index: number) => void;
+  /** Function prop must be named *Action to satisfy Next.js serialization rules */
+  onCloseAction: () => void;
+  /** Function prop must be named *Action to satisfy Next.js serialization rules */
+  onChangeIndexAction: (index: number) => void;
   titles?: string[];
 }
 
@@ -16,26 +18,30 @@ export default function ImageLightbox({
   images,
   currentIndex,
   isOpen,
-  onClose,
-  onChangeIndex,
+  onCloseAction,
+  onChangeIndexAction,
   titles = [],
 }: ImageLightboxProps) {
   const prev = () =>
-    onChangeIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
+    onChangeIndexAction(
+      currentIndex === 0 ? images.length - 1 : currentIndex - 1,
+    );
 
   const next = () =>
-    onChangeIndex(currentIndex === images.length - 1 ? 0 : currentIndex + 1);
+    onChangeIndexAction(
+      currentIndex === images.length - 1 ? 0 : currentIndex + 1,
+    );
 
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 z-9999 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
-      onClick={onClose}
+      onClick={onCloseAction}
     >
       {/* Close */}
       <button
-        onClick={onClose}
+        onClick={onCloseAction}
         className="absolute top-4 right-4 z-50 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
         aria-label="Close"
       >

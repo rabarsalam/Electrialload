@@ -86,8 +86,8 @@ export default function HomeProjects() {
         titles={projectTitles}
         currentIndex={index}
         isOpen={open}
-        onClose={() => setOpen(false)}
-        onChangeIndex={setIndex}
+        onCloseAction={() => setOpen(false)}
+        onChangeIndexAction={setIndex}
       />
     </>
   );

@@ -161,7 +161,8 @@ export default function ProjectsPage() {
         images={projectImages}
         currentIndex={lightboxIndex}
         isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
+        onCloseAction={() => setLightboxOpen(false)}
+        onChangeIndexAction={setLightboxIndex}
         titles={projectTitles}
       />
     </main>
