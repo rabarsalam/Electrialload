@@ -1,8 +1,106 @@
-import { getTranslations } from "next-intl/server";
-import { FiTarget, FiEye, FiAward, FiShield, FiUsers } from "react-icons/fi";
+"use client";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import {
+  FiTarget,
+  FiEye,
+  FiAward,
+  FiShield,
+  FiUsers,
+  FiBriefcase,
+} from "react-icons/fi";
 
-export default async function AboutPage() {
-  const t = await getTranslations("AboutPage");
+export default function AboutPage() {
+  const t = useTranslations("AboutPage");
+
+  const staff = {
+    leadership: [
+      {
+        name: "Eng. Ahmed Ali",
+        role: "Managing Director",
+        department: "Leadership",
+        image: "/images/project-13.jpeg",
+      },
+      {
+        name: "Eng. Sara Karim",
+        role: "Head of Design",
+        department: "Leadership",
+        image: "/images/project-14.jpeg",
+      },
+      {
+        name: "Eng. Baran Mohammed",
+        role: "Site Operations Lead",
+        department: "Leadership",
+        image: "/images/project-15.jpeg",
+      },
+    ],
+    engineering: [
+      {
+        name: "Eng. Dilan Hassan",
+        role: "Electrical Engineer",
+        department: "Engineering",
+        image: "/images/project-10.jpeg",
+      },
+      {
+        name: "Eng. Omar Aziz",
+        role: "Electrical Engineer",
+        department: "Engineering",
+        image: "/images/project-11.jpeg",
+      },
+      {
+        name: "Eng. Ranya Salim",
+        role: "Design Engineer",
+        department: "Engineering",
+        image: "/images/project-12.jpeg",
+      },
+    ],
+    field: [
+      {
+        name: "Mohammed Khalid",
+        role: "Senior Technician",
+        department: "Field Team",
+        image: "/images/project-6.jpeg",
+      },
+      {
+        name: "Soran Ahmed",
+        role: "Technician",
+        department: "Field Team",
+        image: "/images/project-7.jpeg",
+      },
+      {
+        name: "Ali Hussein",
+        role: "Electrician",
+        department: "Field Team",
+        image: "/images/project-8.jpeg",
+      },
+      {
+        name: "Kamal Saeed",
+        role: "Cable Technician",
+        department: "Field Team",
+        image: "/images/project-9.jpeg",
+      },
+    ],
+    admin: [
+      {
+        name: "Noor Ibrahim",
+        role: "Admin / HR",
+        department: "Administration",
+        image: "/images/project-3.jpeg",
+      },
+      {
+        name: "Zana Rashid",
+        role: "Procurement",
+        department: "Administration",
+        image: "/images/project-4.jpeg",
+      },
+      {
+        name: "Hawar Ahmed",
+        role: "Accountant",
+        department: "Administration",
+        image: "/images/project-5.jpeg",
+      },
+    ],
+  };
 
   const values = [
     {
@@ -29,7 +127,7 @@ export default async function AboutPage() {
     <main className="min-h-screen pt-20 bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-20 md:py-28">
-        <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/images/project-1.jpeg')] bg-cover bg-center opacity-20"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             {t("title")}
@@ -110,6 +208,93 @@ export default async function AboutPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              {t("teamTitle")}
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+              {t("teamSubtitle")}
+            </p>
+          </div>
+
+          {(
+            [
+              ["leadership", t("leadershipTitle")],
+              ["engineering", t("engineeringTitle")],
+              ["field", t("fieldTitle")],
+              ["admin", t("adminTitle")],
+            ] as const
+          ).map(([key, title]) => {
+            const members = staff[key];
+            return (
+              <div key={key} className="mt-10 first:mt-0">
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    {title}
+                  </h3>
+                  <div className="h-px flex-1 bg-gradient-to-r from-gray-200 to-transparent" />
+                  <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700">
+                    {members.length}
+                  </span>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {members.map((member) => (
+                    <div
+                      key={member.name}
+                      className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                    >
+                      <div className="relative h-24">
+                        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 opacity-90" />
+                        <div className="absolute inset-0 opacity-25">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-5">
+                        <div className="flex items-start gap-3 -mt-10">
+                          <div className="relative h-16 w-16 overflow-hidden rounded-2xl border-2 border-white bg-gray-100 shadow-lg">
+                            <Image
+                              src={member.image}
+                              alt={member.name}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                          </div>
+                          <div className="pt-2 min-w-0">
+                            <p className="truncate text-base font-bold text-gray-900">
+                              {member.name}
+                            </p>
+                            <p className="text-sm font-semibold text-gray-600">
+                              {member.role}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="mt-4 flex items-center gap-2 text-xs text-gray-500">
+                          <FiBriefcase className="h-4 w-4 text-yellow-500" />
+                          <span className="font-semibold text-gray-700">
+                            {member.department}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

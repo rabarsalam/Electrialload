@@ -2,12 +2,10 @@
 
 import { useEffect } from "react";
 import { useParams, usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 export default function LanguageSync() {
   const params = useParams();
   const pathname = usePathname();
-  const router = useRouter();
   const locale = params?.locale as string;
 
   useEffect(() => {

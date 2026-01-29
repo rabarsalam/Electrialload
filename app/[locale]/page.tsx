@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import HomeProjects from "./HomeProjects";
@@ -25,13 +26,9 @@ const serviceIcons = [
   FiTrendingUp,
 ];
 
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations("HomePage");
+export default function HomePage() {
+  const t = useTranslations("HomePage");
+  const locale = useLocale();
 
   const services = [
     {
@@ -84,75 +81,89 @@ export default async function HomePage({
   return (
     <main className="min-h-screen">
       {/* Hero Section - Full Screen */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gray-950 p-4">
+        {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/BackGround-1.jpeg"
             alt="Electrical Services"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-rrom-gray-900/90 via-gray-800/85 to-gray-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-900/90 to-gray-900/80" />
         </div>
 
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-yellow-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        {/* Subtle animated glows */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-yellow-500/15 blur-3xl" />
+          <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 backdrop-blur-sm rounded-full border border-yellow-500/30">
-              <FiZap className="w-4 h-4 text-yellow-400" />
-              <span className="text-sm font-medium text-yellow-300">
-                {t("heroBadge")}
-              </span>
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-20 sm:px-6 lg:flex-row lg:items-center lg:px-8">
+          {/* Left: Text */}
+          <div className="max-w-xl space-y-8 text-center lg:text-start">
+            <div className="inline-flex items-center gap-2 rounded-full border border-yellow-400/40 bg-yellow-400/10 px-4 py-2 text-xs font-semibold text-yellow-200 backdrop-blur">
+              <FiZap className="h-4 w-4" />
+              <span>{t("heroBadge")}</span>
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight">
-              <span className="block">{t("heroTitle")}</span>
-              <span className="block bg-linear-to-rrom-yellow-400 to-yellow-600 bg-clip-text text-transparent mt-2">
-                {t("heroTitleHighlight")}
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              {t("heroSubtitle")}
-            </p>
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                <span className="block">{t("heroTitle")}</span>
+                <span className="mt-1 block bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                  {t("heroTitleHighlight")}
+                </span>
+              </h1>
+              <p className="mt-4 text-base text-gray-300 sm:text-lg md:text-xl">
+                {t("heroSubtitle")}
+              </p>
+            </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <div className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row sm:justify-start">
               <a
                 href="#services"
-                className="group inline-flex items-center gap-2 bg-linear-to-r from-yellow-500 to-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105"
+                className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-yellow-400 to-yellow-500 px-8 py-3 text-sm font-semibold text-gray-900 shadow-xl shadow-yellow-500/40 transition hover:from-yellow-500 hover:to-yellow-600"
               >
                 {t("heroCTA")}
-                <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <FiArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </a>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-xl border border-white/20 hover:bg-white/20 transition-all"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-8 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
               >
-                <FiPhone className="w-5 h-5" />
+                <FiPhone className="h-5 w-5" />
                 {t("heroContact")}
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 max-w-4xl mx-auto">
+            {/* Small trust bar */}
+            <div className="mt-4 flex flex-col items-center gap-3 text-xs text-gray-300 sm:flex-row sm:items-center sm:gap-4">
+              <div className="flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                <span>24/7 • {t("stat4Label")}</span>
+              </div>
+              <div className="hidden h-px flex-1 bg-gradient-to-r from-gray-600/60 to-transparent sm:block" />
+            </div>
+          </div>
+
+          {/* Right: Stats card */}
+          <div className="mx-auto w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg shadow-2xl sm:p-8 lg:mx-0">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-yellow-300">
+              {t("servicesBadge")}
+            </p>
+            <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-400 mb-2">
+                <div
+                  key={index}
+                  className="rounded-2xl border border-white/10 bg-black/10 p-4 text-center"
+                >
+                  <div className="text-2xl font-bold text-yellow-400 sm:text-3xl">
                     {stat.value}
                   </div>
-                  <div className="text-sm md:text-base text-gray-400">
+                  <div className="mt-1 text-xs text-gray-300 sm:text-sm">
                     {stat.label}
                   </div>
                 </div>
@@ -160,19 +171,12 @@ export default async function HomePage({
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-            <div className="w-1.5 h-1.5 bg-white/50 rounded-full"></div>
-          </div>
-        </div>
       </section>
 
       {/* About Section */}
       <section
         id="about"
-        className="py-20 md:py-32 bg-linear-to-b from-white to-gray-50"
+        className="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -225,7 +229,7 @@ export default async function HomePage({
       {/* Services Section */}
       <section
         id="services"
-        className="py-20 md:py-32 bg-linear-to-b from-gray-50 to-white"
+        className="py-20 md:py-32 bg-gradient-to-b from-gray-50 to-white"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
@@ -252,13 +256,13 @@ export default async function HomePage({
                 >
                   {/* Gradient Top Bar */}
                   <div
-                    className={`absolute top-0 left-0 right-0 h-1.5 bg-linear-to-r ${service.color}`}
+                    className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${service.color}`}
                   ></div>
 
                   <div className="p-8">
                     {/* Icon */}
                     <div
-                      className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br{service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                      className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}
                     >
                       <IconComponent className="w-8 h-8" />
                     </div>
@@ -291,8 +295,8 @@ export default async function HomePage({
           {/* CTA */}
           <div className="text-center mt-16">
             <Link
-              href="/services"
-              className="inline-flex items-center gap-2 bg-gradient-to-rrom-yellow-500 to-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg hover:shadow-xl"
+              href={`/${locale}/services`}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg hover:shadow-xl"
             >
               {t("servicesCTA")}
               <FiArrowRight className="w-5 h-5" />
@@ -376,10 +380,11 @@ export default async function HomePage({
                       {t("contactPhoneLabel")}
                     </p>
                     <a
-                      href="tel:+9647701519683"
-                      className="text-white font-semibold text-lg hover:text-yellow-400 transition-colors"
+                      href="https://wa.me/9647701519683"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      +964 770 151 9683
+                      {t("PhoneNumber")}
                     </a>
                   </div>
                 </div>

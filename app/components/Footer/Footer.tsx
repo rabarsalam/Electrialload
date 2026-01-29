@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
-export default async function Footer({
-  locale,
-}: {
-  locale: string;
-}) {
+export default async function Footer() {
   const t = await getTranslations("Footer");
 
   return (
@@ -13,7 +9,9 @@ export default async function Footer({
       <div className="max-w-7xl mx-auto px-6 py-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div>
-          <h3 className="text-xl font-bold text-white mb-4">Electrical Loads</h3>
+          <h3 className="text-xl font-bold text-white mb-4">
+            Electrical Loads
+          </h3>
           <p className="text-sm leading-relaxed">{t("description")}</p>
         </div>
 

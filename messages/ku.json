@@ -47,6 +47,7 @@
     "contactTitle": "پەیوەندی",
     "contactText": "پەیوەندی بە تیمەکەمان بکە بۆ ڕاوێژکاری یان پرسیاری پڕۆژە. ئێمە لێرەین بۆ یارمەتیدان لە هەموو پێویستیە کارەباییەکانت.",
     "contactPhoneLabel": "تەلەفۆن",
+    "PhoneNumber" : "+٩٦٤ ٧٧٠ ١٥١ ٩٦٨٣",
     "contactEmailLabel": "ئیمەیڵ",
     "contactAddressLabel": "ناونیشان",
     "contactFormTitle": "پەیامێکمان بنێرە",
@@ -54,7 +55,8 @@
     "contactFormEmail": "ئیمەیڵەکەت",
     "contactFormMessage": "پەیامەکەت",
     "contactFormSubmit": "ناردنی پەیام",
-    "contactViewFull": "بینینی پەڕەی پەیوەندی تەواو"
+    "contactViewFull": "بینینی پەڕەی پەیوەندی تەواو",
+    "viewDetails": "بینینی وردەکاری"
   },
   "AboutPage": {
     "title": "دەربارەی Electrical Load",
@@ -69,7 +71,13 @@
     "value2Title": "سەلامەتی سەرەتا",
     "value2Description": "سەلامەتی لە هەموو پرۆژەکانماندا گرنگترین بڕیارە.",
     "value3Title": "پەیوەندی بە کڕیار",
-    "value3Description": "پەیوەندی درێژخایەن دروست دەکەین لەسەر بنەمای متمانە و دڵنیایی."
+    "value3Description": "پەیوەندی درێژخایەن دروست دەکەین لەسەر بنەمای متمانە و دڵنیایی.",
+    "teamTitle": "تیمەکەمان",
+    "teamSubtitle": "لە سەرکردایەتییەوە تا تیمی مەیدان، تیمەکەمان چارەسەری کارەبایی بە سەلامەتی و پیشەیی پێشکەش دەکات.",
+    "leadershipTitle": "سەرکردایەتی",
+    "engineeringTitle": "ئەندازیاری",
+    "fieldTitle": "تیمی مەیدان",
+    "adminTitle": "بەڕێوەبردن"
   },
   "CareerPage": {
     "title": "دەرفەتە کارەکان",
@@ -171,12 +179,15 @@
     "formSubmit": "ناردنی پەیام",
     "infoTitle": "زانیاری پەیوەندی",
     "phone": "تەلەفۆن",
+    "PhoneNumber" : "+٩٦٤ ٧٧٠ ١٥١ ٩٦٨٣",
     "email": "ئیمەیڵ",
     "address": "ناونیشان",
     "addressValue": "هەرێمی کوردستان، عێراق",
     "hoursTitle": "کاتەکانی کار",
     "hours": "یەکشەممە - پێنجشەممە: 8:00 بەیانی - 6:00 ئێوارە",
-    "hoursWeekend": "هەینی - شەممە: داخراوە"
+    "hoursWeekend": "هەینی - شەممە: داخراوە",
+    "formSuccess": "سوپاس بۆ پەیامەکەت! زوو پەیوەندیت پێوە دەکەین.",
+    "formError": "هەڵەیەک ڕوویدا. تکایە دووبارە هەوڵبدە."
   },
   "ProjectsPage": {
     "title": "پڕۆژەکانمان",
@@ -187,6 +198,8 @@
     "filterCommercial": "بازرگانی",
     "filterIndustrial": "پیشەسازی",
     "viewProject": "بینینی پڕۆژە",
-    "projectDetails": "وردەکاریەکانی پڕۆژە"
+    "projectDetails": "وردەکاریەکانی پڕۆژە",
+    "backToProjects": "گەڕانەوە بۆ پڕۆژەکان",
+    "noProjectsFound": "هیچ پڕۆژەیەک لەم جۆرەدا نەدۆزرایەوە."
   }
 }

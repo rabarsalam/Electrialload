@@ -47,6 +47,7 @@
     "contactTitle": "اتصل بنا",
     "contactText": "تواصل معنا للاستشارات أو استفسارات المشاريع. نحن هنا لمساعدتك في جميع احتياجاتك الكهربائية.",
     "contactPhoneLabel": "الهاتف",
+    "PhoneNumber" : "+٩٦٤ ٧٧٠ ١٥١ ٩٦٨٣",
     "contactEmailLabel": "البريد الإلكتروني",
     "contactAddressLabel": "العنوان",
     "contactFormTitle": "أرسل لنا رسالة",
@@ -54,7 +55,8 @@
     "contactFormEmail": "بريدك الإلكتروني",
     "contactFormMessage": "رسالتك",
     "contactFormSubmit": "إرسال الرسالة",
-    "contactViewFull": "عرض صفحة الاتصال الكاملة"
+    "contactViewFull": "عرض صفحة الاتصال الكاملة",
+    "viewDetails": "عرض التفاصيل"
   },
   "AboutPage": {
     "title": "حول شركة Electrical Load",
@@ -69,7 +71,13 @@
     "value2Title": "السلامة أولاً",
     "value2Description": "السلامة هي أولويتنا القصوى في جميع مشاريعنا.",
     "value3Title": "الالتزام بالعملاء",
-    "value3Description": "نبني علاقات طويلة الأمد قائمة على الثقة والشفافية والخدمة الموثوقة."
+    "value3Description": "نبني علاقات طويلة الأمد قائمة على الثقة والشفافية والخدمة الموثوقة.",
+    "teamTitle": "فريقنا",
+    "teamSubtitle": "من الإدارة إلى الفنيين في الموقع، فريقنا يقدم حلولاً كهربائية آمنة وموثوقة باحترافية.",
+    "leadershipTitle": "الإدارة",
+    "engineeringTitle": "الهندسة",
+    "fieldTitle": "فريق الموقع",
+    "adminTitle": "الإدارة العامة"
   },
   "CareerPage": {
     "title": "الفرص الوظيفية",
@@ -171,12 +179,15 @@
     "formSubmit": "إرسال الرسالة",
     "infoTitle": "معلومات الاتصال",
     "phone": "الهاتف",
+    "PhoneNumber" : "+٩٦٤ ٧٧٠ ١٥١ ٩٦٨٣",
     "email": "البريد الإلكتروني",
     "address": "العنوان",
     "addressValue": "إقليم كردستان، العراق",
     "hoursTitle": "ساعات العمل",
     "hours": "الأحد - الخميس: 8:00 صباحاً - 6:00 مساءً",
-    "hoursWeekend": "الجمعة - السبت: مغلق"
+    "hoursWeekend": "الجمعة - السبت: مغلق",
+    "formSuccess": "شكرًا لرسالتك! سنتواصل معك في أقرب وقت.",
+    "formError": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
   "ProjectsPage": {
     "title": "مشاريعنا",
@@ -187,6 +198,8 @@
     "filterCommercial": "تجاري",
     "filterIndustrial": "صناعي",
     "viewProject": "عرض المشروع",
-    "projectDetails": "تفاصيل المشروع"
+    "projectDetails": "تفاصيل المشروع",
+    "backToProjects": "العودة إلى المشاريع",
+    "noProjectsFound": "لا توجد مشاريع في هذا القسم."
   }
 }

@@ -58,7 +58,7 @@ export default function HomeProjects() {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="text-xl font-bold mb-1">{project.title}</h3>
                 <p className="text-sm text-gray-300">{project.category}</p>
@@ -67,7 +67,7 @@ export default function HomeProjects() {
                   className="mt-3 inline-flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-medium text-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  View Details
+                  {t("viewDetails")}
                   <FiArrowRight className="w-4 h-4" />
                 </Link>
               </div>

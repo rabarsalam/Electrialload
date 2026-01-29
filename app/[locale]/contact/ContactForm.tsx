@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { FiSend } from "react-icons/fi";
+import { useToast } from "@/app/components/ToastProvider";
 
 export default function ContactForm() {
   const t = useTranslations("ContactPage");
+  const { showToast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,12 +16,24 @@ export default function ContactForm() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    try {
+      // Simulate async submit – replace with real API call when ready
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      showToast("success", t("formSuccess"));
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error(err);
+      showToast("error", t("formError"));
+    }
   };
 
   const handleChange = (

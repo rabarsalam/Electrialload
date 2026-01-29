@@ -9,7 +9,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-arabic: var(--font-arabic);
+  --font-kurdish: var(--font-kurdish);
+  --font-mono: ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,4 +24,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+body.font-arabic {
+  font-family: var(--font-arabic), Arial, sans-serif;
+}
+
+body.font-kurdish {
+  font-family: var(--font-kurdish), Arial, sans-serif;
+}
+
+body.font-sans {
+  font-family: var(--font-geist-sans), Arial, sans-serif;
 }

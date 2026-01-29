@@ -1,9 +1,10 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+import { useTranslations } from "next-intl";
 import ContactForm from "./ContactForm";
 import { FiMail, FiPhone, FiMapPin, FiClock } from "react-icons/fi";
 
-export default async function ContactPage() {
-  const t = await getTranslations("ContactPage");
+export default function ContactPage() {
+  const t = useTranslations("ContactPage");
 
   return (
     <main className="min-h-screen pt-20 bg-gradient-to-b from-gray-50 to-white">
@@ -43,10 +44,12 @@ export default async function ContactPage() {
                       {t("phone")}
                     </h3>
                     <a
-                      href="tel:+9647701519683"
+                      href="https://wa.me/9647701519683"
                       className="text-gray-600 hover:text-yellow-600 transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      +964 770 151 9683
+                      {t("PhoneNumber")}
                     </a>
                   </div>
                 </div>

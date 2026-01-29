@@ -36,7 +36,7 @@ export default function ProjectDetailPage() {
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"
         >
           <FiArrowLeft className="w-5 h-5" />
-          <span>Back to Projects</span>
+          <span>{t("backToProjects")}</span>
         </Link>
       </div>
 
@@ -97,7 +97,7 @@ export default function ProjectDetailPage() {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-2xl shadow-lg p-8 sticky top-24">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Project Details</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">{t("projectDetails")}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">

@@ -2,12 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { FiZap } from "react-icons/fi";
 
 export default function PageLoader() {
   const pathname = usePathname();
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

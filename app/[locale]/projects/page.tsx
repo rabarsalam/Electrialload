@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { FiGrid, FiHome, FiBriefcase, FiPackage } from "react-icons/fi";
 import ImageLightbox from "@/app/components/ImageLightbox";
 
@@ -11,7 +12,11 @@ type FilterType = "all" | "residential" | "commercial" | "industrial";
 
 export default function ProjectsPage() {
   const t = useTranslations("ProjectsPage");
-  const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const locale = useLocale();
+  const searchParams = useSearchParams();
+  const initialCategory = (searchParams.get("category") ||
+    "all") as FilterType;
+  const [activeFilter, setActiveFilter] = useState<FilterType>(initialCategory);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -104,18 +109,16 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-xl text-gray-500">
-                No projects found in this category.
-              </p>
+              <p className="text-xl text-gray-500">{t("noProjectsFound")}</p>
             </div>
           ) : (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredProjects.map((project, index) => {
                 return (
                   <Link
-                    href={`/projects/${project.id}`}
+                    href={`/${locale}/projects/${project.id}`}
                     key={project.id}
-                    className="group relative aspect-square rounded-xl overflow-hidden bg-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer block"
+                    className="group relative block aspect-square overflow-hidden rounded-xl bg-gray-100 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                   >
                     <Image
                       src={project.image}
